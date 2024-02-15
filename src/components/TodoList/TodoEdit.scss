@@ -18,6 +18,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    
     h2 {
       box-sizing: border-box;
       width: 100%;
@@ -27,6 +28,25 @@
       background-color: #3E768C;
       color: white;
     }
+
+    .ExitBtn {
+      background: none;
+      outline: none;
+      border: none;
+      background: #7297A6;
+      color: white;
+      padding-left: 1rem;
+      padding-right: rem;
+      font-size: 1rem;
+      display: inline;
+      align-items: center;
+      cursor: pointer;
+      transition: 0.1s background ease-in;
+      &:hover {
+        background: #226473;
+      }
+    }
+
     input {
       margin: 2rem 0;
       padding: 0.3rem;

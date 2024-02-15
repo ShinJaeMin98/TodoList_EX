@@ -4,7 +4,6 @@ import TodoInsert from "./TodoInsert";
 import TodoList from "./TodoList";
 import TodoHead from "./TodoHead";
 import TodoEdit from "./TodoEdit";
-import TodoCreate from "./TodoCreate";
 
 const TodoContainer = () => {
   const [todos, setTodos] = useState([
@@ -87,7 +86,6 @@ const TodoContainer = () => {
   return (
           <TodoTemplate>
             <TodoHead />
-            <TodoInsert onInsert={onInsert} />
             <TodoList 
               todos={todos} 
               onRemove={onRemove} 
@@ -95,6 +93,7 @@ const TodoContainer = () => {
               onChangeSelectedTodo={onChangeSelectedTodo}
               onInsertToggle={onInsertToggle}
             />
+            <TodoInsert onInsert={onInsert} />
             {insertToggle && (
               <TodoEdit
                 onInsert={onInsert}
