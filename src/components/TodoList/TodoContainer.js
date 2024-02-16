@@ -78,14 +78,38 @@ const TodoContainer = () => {
 			);
     }, []);
 
-  // const percentTodo = () => {
-  //   const todosPercent = todos.filter((todo) => todo.isDone).length;
-  //   return todos.length ? ((todosPercent / todos.length) * 100).toFixed(2) : 0;
-  // };
+   const percentTodo = () => {
+    const completedTodos = todos.filter((todo) => todo.checked).length;
+     return todos.length ? ((completedTodos / todos.length) * 100).toFixed(2) : 0;
+   };
 
   return (
           <TodoTemplate>
-            <TodoHead />
+            <TodoHead todos={todos} />
+            <div>
+              <div style={{ marginTop: "10px", marginBottom: "10px", paddingLeft: "10px"}}>
+                <strong>진행률:</strong> {percentTodo()}%
+              </div>
+              <div
+                style={{
+                  width: "100%",
+                  height: "12px",
+                  background: "#f3f3f3",
+                  borderRadius: "6px",
+                  overflow: "hidden",
+                }}
+              >
+                <div
+                  style={{
+                    width: `${percentTodo()}%`,
+                    height: "100%",
+                    background: "linear-gradient(to right, #0A4B59 ,#3E768C, #88B0BF)",
+                    borderRadius: "6px",
+                    transition: "width 0.5s ease",
+                  }}
+                />
+              </div>
+            </div>
             <TodoList 
               todos={todos} 
               onRemove={onRemove} 

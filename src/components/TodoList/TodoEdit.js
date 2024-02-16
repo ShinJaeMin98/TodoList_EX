@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from 'react';
 import './TodoEdit.scss';
+import { MdClose } from "react-icons/md";
 
-const TodoEdit = ({ insertToggle, selectedTodo, onUpdate, ModalOpen }) =>  {
+const TodoEdit = ({ insertToggle, selectedTodo, onUpdate, onInsertToggle }) =>  {
   const [value, setValue] = useState('');
-  const [isOpen, setIsOpen] = useState(false);
 
   const onChange = useCallback((e) => {
     setValue(e.target.value);
@@ -24,19 +24,15 @@ const TodoEdit = ({ insertToggle, selectedTodo, onUpdate, ModalOpen }) =>  {
       setValue(selectedTodo.text);
     }
   }, [selectedTodo]);
-
-  const openModalHandler = () => {
-    // isOpen의 상태를 변경하는 메소드를 구현
-    // !false -> !true -> !false
-    setIsOpen(!isOpen) 
-  };
   
   return (
     <div className="background">
       <form onSubmit={onSubmit} className="todoedit__insert">
         <h2>
-          수정하기 
-          <button className='ExitBtn' onClick={openModalHandler}>x</button>
+          수정하기
+          <button type="button" className='ExitBtn' onClick={onInsertToggle}>
+            <MdClose />
+          </button>
         </h2>
         <input
           onChange={onChange}
